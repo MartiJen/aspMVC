@@ -1,13 +1,15 @@
 ﻿@model Roomy.Models.User
 
 @{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "Create";
 }
 
+@section SectionTitle{
 <h2>Nouvel utilisateur</h2>
+    }
 
-<div class="row">
-    <div class="col-md-4">
+
         @using (Html.BeginForm("Create", "Users", System.Web.Mvc.FormMethod.Post))
         {
             <div class="form-group">
@@ -55,5 +57,5 @@
                 <button type="submit" class="btn btn-dark">Enregistrer</button>
             </div>
         }
-    </div>
-</div>
+
+
