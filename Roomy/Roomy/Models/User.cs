@@ -19,12 +19,13 @@ namespace Roomy.Models
         [Display(Name = "Prénom")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [Required(ErrorMessage = "Le champ mail est obligatoire")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
             ErrorMessage = "Le format du mail est incorrect.")]
         [Display(Name = "Mail")]
+        [ExistMailUser(ErrorMessage ="L'email existe déjà")]
         public string Mail { get; set; }
 
         [Required(ErrorMessage = "Le champ nom est obligatoire")]
