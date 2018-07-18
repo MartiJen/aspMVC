@@ -132,21 +132,29 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\roomy.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\BackOffice\Views\web.config" />
+    <Content Include="Areas\BackOffice\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\BackOffice\Views\DashBoard\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -161,6 +169,10 @@
     <Compile Include="Migrations\201807180828105_DropDownColumnConfirmePasseword.cs" />
     <Compile Include="Migrations\201807180828105_DropDownColumnConfirmePasseword.Designer.cs">
       <DependentUpon>201807180828105_DropDownColumnConfirmePasseword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807181349256_AddRoom.cs" />
+    <Compile Include="Migrations\201807181349256_AddRoom.Designer.cs">
+      <DependentUpon>201807181349256_AddRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -201,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\BackOffice\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -211,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807180828105_DropDownColumnConfirmePasseword.resx">
       <DependentUpon>201807180828105_DropDownColumnConfirmePasseword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807181349256_AddRoom.resx">
+      <DependentUpon>201807181349256_AddRoom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

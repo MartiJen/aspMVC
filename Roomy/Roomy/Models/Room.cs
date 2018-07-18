@@ -39,6 +39,6 @@ namespace Roomy.Models
         public int? UserID { get; set; }
 
         [ForeignKey("UserID")]
-        public User Users { get; set; }
+        public User User { get; set; }
     }
 }
