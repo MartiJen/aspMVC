@@ -17,7 +17,15 @@ namespace Roomy.Utils
                 MD5CryptoServiceProvider crypto = new MD5CryptoServiceProvider();
                 byte[] hash = crypto.ComputeHash(textBytes);
 
-                return System.Text.Encoding.Default.GetString(hash);
+                string result = "";
+                foreach (byte b in hash)
+                {
+                    if (b < 16)
+                        result += "0" + b.ToString("x");
+                    else
+                        result += b.ToString("x");
+                }
+                return result;
             }
             catch
             {

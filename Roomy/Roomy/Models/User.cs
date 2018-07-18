@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Roomy.Utils.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,6 +30,7 @@ namespace Roomy.Models
         [Required(ErrorMessage = "Le champ nom est obligatoire")]
         [Display(Name = "Date de naissance")]
         [DataType(DataType.Date)]
+        [Major(18, ErrorMessage ="Attention, vous devez être major")]
         public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "Le champ nom est obligatoire")]

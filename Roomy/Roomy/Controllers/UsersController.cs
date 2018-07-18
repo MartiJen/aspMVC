@@ -30,6 +30,7 @@ namespace Roomy.Controllers
         {
             if(ModelState.IsValid)
             {
+                db.Configuration.ValidateOnSaveEnabled = false;
                 user.Password = user.Password.HashMD5();
 
                 //Enregistrer en bdd
