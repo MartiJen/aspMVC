@@ -41,6 +41,7 @@ namespace Roomy.Models
         [Display(Name = "Confirmation du mot de passe")]
         [Compare("Password", ErrorMessage = "Erreur sur la confirmation du mot de passe")]
         [DataType(DataType.Password)]
+        [NotMapped]
         public string ConfirmePassword { get; set; }
 
         [Required(ErrorMessage = "Civilité obligatoire")]
