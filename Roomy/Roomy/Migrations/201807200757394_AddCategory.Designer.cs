@@ -7,13 +7,13 @@ namespace Roomy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Modif : IMigrationMetadata
+    public sealed partial class AddCategory : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Modif));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCategory));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807191430008_Modif"; }
+            get { return "201807200757394_AddCategory"; }
         }
         
         string IMigrationMetadata.Source

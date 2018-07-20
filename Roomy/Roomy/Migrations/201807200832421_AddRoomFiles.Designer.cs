@@ -7,13 +7,13 @@ namespace Roomy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreationModelCategory : IMigrationMetadata
+    public sealed partial class AddRoomFiles : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreationModelCategory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRoomFiles));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807191040148_CreationModelCategory"; }
+            get { return "201807200832421_AddRoomFiles"; }
         }
         
         string IMigrationMetadata.Source

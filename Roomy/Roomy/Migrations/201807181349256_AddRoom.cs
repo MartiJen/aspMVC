@@ -17,8 +17,8 @@ namespace Roomy.Migrations
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Description = c.String(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
-                        UserID = c.Int(nullable: false),
-                    })
+                        UserID = c.Int(nullable: false)
+                })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: true)
                 .Index(t => t.UserID);
