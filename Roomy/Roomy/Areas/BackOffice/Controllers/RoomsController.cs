@@ -132,6 +132,11 @@ namespace Roomy.Areas.BackOffice.Controllers
         [HttpPost]
         public ActionResult AddFile(int id, HttpPostedFileBase upload)
         {
+            if (upload == null)
+            {
+                return RedirectToAction("Edit", new { id });
+            }
+
             if (upload.ContentLength > 0)
             {
                 var model = new RoomFile();
@@ -147,11 +152,22 @@ namespace Roomy.Areas.BackOffice.Controllers
 
                 db.RoomFiles.Add(model);
                 db.SaveChanges();
+
                 return RedirectToAction("Edit", new { id = model.RoomID });
             }
             else
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            
+        }
+
+        
+        public ActionResult DeleteFile (int id)
+        {
+
+            RoomFile file = db.RoomFiles.Find(id);
+            db.RoomFiles.Remove(file);
+            db.SaveChanges();
+
+            return RedirectToAction("Edit", new { id = file.RoomID });
         }
 
         protected override void Dispose(bool disposing)

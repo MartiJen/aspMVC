@@ -81,25 +81,31 @@
 }
 
 <hr />
-@foreach (var file in Model.Files)
-{
-    <div class="col-md-3">
-        <img class="img-thumbnail" title="@file.Name" src="data: @file.ContentType;base64, @System.Convert.ToBase64String(file.Content)" height="128" />
-        <p>@file.Name  <a href="#" class="btn btn-danger"><i class="fa-feed fe-remove"></i></a></p>
-    </div>
-}
 
-<hr />
+<div class="row">
+    @foreach (var file in Model.Files)
+    {
+        <div class="col-md-3">
+            <img class="img-thumbnail" title="@file.Name" src="data:@file.ContentType;base64, @Convert.ToBase64String(file.Content)" />
+            <p>@file.Name <a href="@Url.Action("DeleteFile", "Rooms", new { id = file.ID })" class="btn btn-danger"><i class="fa fa-remove"></i></a></p>
+            @*<form id="formAddFile" action="@Url.Action("DeleteFile", "Rooms", new { id = file.ID })" method="POST">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>*@
+        </div>
+    }
+</div>
 
-<form action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
+
+<form id="formAddFile" action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
     @Html.HiddenFor(x => x.ID)
     <div class="form-group">
         <label>Fichier</label>
-        <input type="file" name="upload" class="form-control" />
-
+        <input id="upload" type="file" value="" name="upload" class="form-control" />
     </div>
     <button type="submit" class="btn btn-warning">Ajouter</button>
 </form>
+
+<hr />
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -110,4 +116,37 @@
     <script>
         tinymce.init({ selector: '#Description' })
     </script>
+
+    @*<script>
+            $(document).ready(function() {
+                $("#formAddFile").submit(function (ev) {
+                    ev.preventDefault();
+                    if ($("#upload").get(0).files.length === 0) {
+                        window.alert("Aucun fichier de sélectionné");
+                    }
+                    @*else {
+                        var url = "/backoffice/rooms/addfiles?id=" + @Model.ID + "&upload=" + ;
+                        window.location.href = url;
+                    }
+
+                })
+            });
+        </script>*@
+
+    @*<script>
+            $(document).ready(function () {
+                $("#deleteFile").on("click", function (ev) {
+                    $.ajax({
+                        url: "http://http://localhost:54606/BackOffice/Rooms/Edit/DeleteFile" + id,
+                        method: 'Delete',
+                        success: function () {
+                            window.location.href = "http://http://localhost:54606/BackOffice/Rooms/Edit/1.html";
+                            alert("Photo supprimée");
+                        }
+                    });
+                    ev.preventDefault();
+                });
+            });
+        </script>*@
+
 }
