@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Roomy.Utils;
+using Roomy.Filters;
 
 namespace Roomy.Areas.BackOffice.Controllers
 {
@@ -22,26 +23,44 @@ namespace Roomy.Areas.BackOffice.Controllers
         // POST: BackOffice/Authentication/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(AuthenticationLoginViewModels model)
+        public ActionResult Login(AuthenticationLoginViewModel model)
         {
-            var user = db.Users.SingleOrDefault(x => x.Mail == model.Login && x.Password == model.Password.HashMD5());
-            if (user == null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Login");
+                var passwordHash = model.Password.HashMD5();
+                var user = db.Users.SingleOrDefault(x => x.Mail == model.Login && x.Password == passwordHash);
+                if (user == null)
+                {
+                    //1
+                    //ModelState.AddModelError("", "Utilisateur ou mot de passe incorrect.");
+
+                    //2
+                    ViewBag.ErrorMEssage = "Utilisateur ou mot de passe incorrect.";
+
+                    return View(model);
+                    //return RedirectToAction("Login");
+                }
+                else
+                {
+
+                    Session.Add("USER_BO", user);
+                    return RedirectToAction("Index", "DashBoard", new { area = "BackOffice" });
+                }
             }
-            else
-            {
-                Session.Add("USER_BO", user);
-                return RedirectToAction("Index", "DashBoard", new { area = "BackOffice" });
-            }
+            return View(model);
         }
 
         // GET: BackOffice/Authentication/Logout
+        [AuthenticationFilter]
         public ActionResult Logout()
         {
             Session.Clear();
             return RedirectToAction("Index", "Home", new { area = "" });
         }
+
+
+        
+
 
         protected override void Dispose(bool disposing)
         {

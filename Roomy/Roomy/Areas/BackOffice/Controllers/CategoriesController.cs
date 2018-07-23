@@ -8,9 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using Roomy.Areas.BackOffice.Models;
 using Roomy.Data;
+using Roomy.Filters;
 
 namespace Roomy.Areas.BackOffice.Controllers
 {
+
+    [AuthenticationFilter]
     public class CategoriesController : Controller
     {
         private RoomyDbContext db = new RoomyDbContext();

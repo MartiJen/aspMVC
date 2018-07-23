@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Roomy.Areas.BackOffice.Models
 {
-    public class AuthenticationLoginViewModels
+    public class AuthenticationLoginViewModel
     {
 
         [Display(Name = "Adresse mail")]
