@@ -96,7 +96,7 @@
 </div>
 
 
-<form id="formAddFile" action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
+<form id="addFile" action="@Url.Action("AddFile", "Rooms")" method="post" enctype="multipart/form-data">
     @Html.HiddenFor(x => x.ID)
     <div class="form-group">
         <label>Fichier</label>
@@ -119,7 +119,7 @@
 
     @*<script>
             $(document).ready(function() {
-                $("#formAddFile").submit(function (ev) {
+                $("#addFile").submit(function (ev) {
                     ev.preventDefault();
                     if ($("#upload").get(0).files.length === 0) {
                         window.alert("Aucun fichier de sélectionné");
